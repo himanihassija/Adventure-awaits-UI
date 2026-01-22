@@ -1,0 +1,71 @@
+name = input("Hey, type your name: ")
+print("Hello " + name + " Welcome! Hope you're doing good today!")
+should_we_play = input("Are you ready to embark upon this adventure!? (yes/no)")
+health = 100
+
+if should_we_play == "Yes" or should_we_play == "YES" or should_we_play == "yes":
+    print("Brace yourself!")
+    weapon = input("Choose a weapon (sword/bow): ")
+    if weapon == "sword":
+        damage = 30
+        print("You chose the sword.")
+    elif weapon == "bow":
+        damage = 20
+        print("You chose the bow.")
+    else:
+        damage = 10
+        print("You have no weapon :( ")
+    direction = input("Do you want to go left or right? (left/right) ")
+    if direction == "left":
+        print("You went left and fell into a trap.")
+        health = health - 30
+        print("Your health is now:", health)
+        if health <= 0:
+            print("You died. Game over.")
+        else:
+            choice = input("You see a cave. Do you want to enter or run? (enter/run) ")
+            if choice == "enter":
+                print("You found a health potion.")
+                health = health + 20
+                print("Your health is now:", health)
+                print("You ran away safely.")
+                print("After resting in the cave, you safely exit the forest.")
+                print("You survived the adventure. YOU WIN!")
+
+            else:
+                print("You ran away safely.")
+                print("You found your way out of the forest.")
+                print("YOU WIN!")
+    elif direction == "right":
+        print("You went right and reached a bridge.")
+        print("A monster appears!")
+        fight = input("Do you want to fight or escape? (fight/escape) ")
+        if fight == "escape":
+            print("You tried to escape but got injured.")
+            health = health - 20
+            print("Your health is now:", health)
+            if health <= 0:
+                print("You died. Game over.")
+        else:
+            monster_health = 50
+            print("Battle starts!")
+            monster_health = monster_health - damage
+            print("You attacked the monster.")
+            print("Monster health is now:", monster_health)
+            if monster_health > 0:
+                health = health - 20
+                print("The monster attacked you.")
+                print("Your health is now:", health)
+            if health <= 0:
+                print("You died. Game over.")
+            else:
+                print("You defeated the monster!")
+                treasure = input("You see a treasure chest. Open it? (yes/no) ")
+                if treasure == "yes":
+                    print("You found the treasure. YOU WON!")
+                else:
+                    print("You walked away safely. YOU WON!")
+    else:
+        print("Wrong choice. You waited too long and died.")
+else:
+    print("Welp... too bad")
